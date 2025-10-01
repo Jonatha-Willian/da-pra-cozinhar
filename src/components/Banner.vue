@@ -1,9 +1,9 @@
 <template>
     <header class="banner">
       <div class="apresentacao">
-        <img src="../assets/images/logo.svg" alt="Logo do Dá Pra Cozinhasr" class="logo">
+        <img src="../assets/images/logo.png" alt="Logo do Dá Pra Cozinhasr" class="logo">
         <p class="cabecalho-lg frase-cabecalho">
-          <span class="texto-verde">Um banquete de iseias para</span>
+          <span class="texto-verde">Um banquete de ideias para</span>
           despertar o chef que há em você
         </p>
         <p class="subtitulo-lg">
