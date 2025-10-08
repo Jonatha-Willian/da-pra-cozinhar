@@ -2,13 +2,13 @@
     export default {
         props: {
             texto: {type: String, required: true},
-            ativa: {type: Boolean}
+            ativa: Boolean
         }
     }
 </script>
 
 <template>
-    <span class="tag" :class="{ ativa: ativa}">
+    <span :class="['tag', {ativa}]">
         {{  texto }}
     </span>
 </template>

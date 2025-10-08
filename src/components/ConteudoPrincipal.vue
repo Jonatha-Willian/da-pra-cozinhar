@@ -1,36 +1,34 @@
 <script lang="ts">
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
-import Tag from './Tag.vue';
+import SuaLista from './SuaLista.vue';
 
 export default {
-    data(){
-        return{
-            ingredientes: ['Alho', 'Manteiga', 'Orégano']
-        }
+  data() {
+    return {
+      ingredientes: [] as string[]
+    };
+  },
+  components: { SelecionarIngredientes, SuaLista },
+  methods: {
+    adicionarIngredientes(ingrediente: string) {
+      this.ingredientes.push(ingrediente)
     },
-    components: {SelecionarIngredientes, Tag}
-}  
+    removerIngrediente(ingrediente: string){
+      this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista)
+    }
+  }
+}
 </script>
 
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <spam class="subtitulo-lg sua-lista-texto">
-                Sua lista:
-            </spam>
-            <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-                <li v-for="ingrediente in ingredientes"
-                v-bind:key="ingrediente">
-                    <Tag :texto="ingrediente" ativa />
-                </li>
-            </ul>
-            <p v-else class="paragrafo lista-vazia">
-                <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de Lupa de Pesquisa">
-                Sua lista está vazia, selecione ingrediente para iniciar.
-            </p>
-        </section>
-        <SelecionarIngredientes /> 
-    </main>
+  <main class="conteudo-principal">
+    <SuaLista :ingredientes="ingredientes" />
+    <SelecionarIngredientes
+      @adicionar-ingrediente="adicionarIngredientes"
+      @remover-ingrediente="removerIngrediente"
+     />
+  </main>
+
 </template>
 
 <style scoped>
@@ -44,31 +42,6 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-}
-
-.sua-lista-texto {
-  color: var(--coral, #F0633C);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.ingredientes-sua-lista {
-  display: flex;
-  justify-content: center;
-  gap: 1rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.lista-vazia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-
-  color: var(--coral, #F0633C);
-  text-align: center;
 }
 
 @media only screen and (max-width: 1300px) {
