@@ -1,9 +1,14 @@
-import type ICategoria from "@/interfaces/ICategorias";
+import type ICategorias from "@/interfaces/ICategorias";
+import type IReceitas from "@/interfaces/IReceitas";
 
+async function obterDadosURL<T>(url: string) {
+  const resposta = await fetch(url);
+  return resposta.json() as T;
+}
 export async function obterCategorias() {
-  const resposta = await fetch('https://gist.githubusercontent.com/Jonatha-Willian/807c9fa3e73ef3014059ea2e337ed6de/raw/9b91eb8b24ac6fbbf418d65d5cd8835f4272f8c4/categorias-ingredientes.json');
-  
-  const categorias: ICategoria[] = await resposta.json();
-  return categorias;
+  return obterDadosURL<ICategorias[]>('https://gist.githubusercontent.com/antonio-evaldo/002ad55e1cf01ef3fc6ee4feb9152964/raw/bf463b47860043da3b3604ca60cffc3ad1ba9865/categorias.json');
+}
 
-  }
+export async function obterReceitas() {
+  return obterDadosURL<IReceitas[]>('https://gist.githubusercontent.com/Jonatha-Willian/5ec7d3463250b739c0d305d164681fe6/raw/3459428f105bb260a34e564f9ff03e7015074dcc/receitas.json');
+}
