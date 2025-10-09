@@ -6,6 +6,7 @@ export default{
 <template>
     <footer class="rodape">
         <p class="paragrafo-lg">Desenvolvido por Jonatha Willian P. Santos - Projeto para Portfólio</p>
+        <p class="paragrafo-lg contato" >Contato: jonathasantos.dev@hotmail.com</p>
     </footer>
 </template>
 
@@ -20,7 +21,10 @@ export default{
   text-align: center;
   color: var(--branco);
   font-size: 1rem;
-  padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.contato {
+    font-size: 0.8rem;
+    padding-bottom: 0;
 }
 </style>
